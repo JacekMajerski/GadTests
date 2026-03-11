@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write .",
-    "test": "playwright test",
     "lint": "npx eslint . --max-warnings=0",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "npx playwright test",
+    "test:headed": "npm run test -- --headed",
+    "test:ui": "npm run test -- --ui",
+    "show-report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "",
