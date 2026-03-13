@@ -44,6 +44,7 @@ test.describe('Verify menu main buttons', () => {
 
     // Act
     await articlesPage.goto();
+    // eslint-disable-next-line playwright/prefer-locator
     await articlesPage.mainMenu.homePage.click();
 
     const homePage = new HomePage(page);
