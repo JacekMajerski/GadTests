@@ -5,6 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup: 'src/global-setup.ts',
   timeout: 60_000,
   expect: {
     timeout: 10000,
@@ -14,7 +15,8 @@ export default defineConfig({
   workers: undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:3000',
+    // baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL,
     headless: true,
     actionTimeout: 0,
     trace: 'on',
