@@ -1,3 +1,4 @@
+import { RegisterUser } from '../../src/models/user.model';
 import { LoginPage } from '../../src/pages/login.page';
 import { RegisterPage } from '../../src/pages/register.page';
 import { faker } from '@faker-js/faker';
@@ -8,13 +9,25 @@ test.describe('Verify register', () => {
     page,
   }) => {
     //Arrange
-    const userFirstName = faker.person.firstName().replace(/[^A-Za-z]/g, '');
-    const userLastName = faker.person.lastName().replace(/[^A-Za-z]/g, '');
-    const userEmail = faker.internet.email({
-      firstName: userFirstName,
-      lastName: userLastName,
+    // const userFirstName = faker.person.firstName().replace(/[^A-Za-z]/g, '');
+    // const userLastName = faker.person.lastName().replace(/[^A-Za-z]/g, '');
+    // const userEmail = faker.internet.email({
+    //   firstName: userFirstName,
+    //   lastName: userLastName,
+    // });
+    // const userPassword = faker.internet.password();
+
+    const registerUserData: RegisterUser = {
+      userFirstName: faker.person.firstName().replace(/[^A-Za-z]/g, ''),
+      userLastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
+      userEmail: '',
+      userPassword: faker.internet.password(),
+    };
+
+    registerUserData.userEmail = faker.internet.email({
+      firstName: registerUserData.userFirstName,
+      lastName: registerUserData.userLastName,
     });
-    const userPassword = faker.internet.password();
 
     // Act
 
@@ -23,12 +36,13 @@ test.describe('Verify register', () => {
     const registerPage = new RegisterPage(page);
 
     await registerPage.goto();
-    await registerPage.register(
-      userFirstName,
-      userLastName,
-      userEmail,
-      userPassword,
-    );
+    // await registerPage.register(
+    //   registerUserData.userFirstName,
+    //   registerUserData.userLastName,
+    //   registerUserData.userEmail,
+    //   registerUserData.userPassword,
+    // );
+    await registerPage.register(registerUserData);
 
     const expectedAlertPopupText = 'User created';
 
