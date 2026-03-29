@@ -4,5 +4,5 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "cSpell.words": ["testtest"]
+  "cSpell.words": ["octavalidate", "testtest"]
 }
