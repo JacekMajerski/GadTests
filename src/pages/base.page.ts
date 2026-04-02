@@ -1,15 +1,22 @@
 import { Page } from '@playwright/test';
 
 export class BasePage {
-  url = '/articles.html';
+  url: string;
 
-  constructor(protected page: Page) {}
+  constructor(protected page: Page) {
+    this.url = '';
+  }
 
   async goto(): Promise<void> {
     await this.page.goto(this.url);
   }
 
   async title(): Promise<string> {
+    await this.page.waitForLoadState();
     return this.page.title();
+  }
+
+  async waitForPageToLoadUrl(): Promise<void> {
+    await this.page.waitForURL(this.url);
   }
 }

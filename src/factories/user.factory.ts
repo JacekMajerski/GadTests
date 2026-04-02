@@ -1,5 +1,5 @@
 import { RegisterUser } from '../models/user.model';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 export function randomUserData(): RegisterUser {
   const registerUserData: RegisterUser = {
@@ -8,9 +8,11 @@ export function randomUserData(): RegisterUser {
     userEmail: '',
     userPassword: faker.internet.password(),
   };
+
   registerUserData.userEmail = faker.internet.email({
     firstName: registerUserData.userFirstName,
     lastName: registerUserData.userLastName,
   });
+
   return registerUserData;
 }

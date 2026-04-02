@@ -3,9 +3,9 @@ import { CommentsPage } from '../../src/pages/comments.page';
 import { HomePage } from '../../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
-test.describe('GAD tests titles', () => {
+test.describe('Verify service main pages', () => {
   test('home page title @GAD-R01-01', async ({ page }) => {
-    //Arrange
+    // Arrange
     const homePage = new HomePage(page);
 
     // Act
@@ -17,10 +17,10 @@ test.describe('GAD tests titles', () => {
   });
 
   test('articles page title @GAD-R01-02', async ({ page }) => {
-    //Arrange
+    // Arrange
     const articlesPage = new ArticlesPage(page);
 
-    //Act
+    // Act
     await articlesPage.goto();
 
     // Assert
@@ -29,7 +29,7 @@ test.describe('GAD tests titles', () => {
   });
 
   test('comments page title @GAD-R01-02', async ({ page }) => {
-    //Arrange
+    // Arrange
     const commentsPage = new CommentsPage(page);
 
     // Act
@@ -40,19 +40,8 @@ test.describe('GAD tests titles', () => {
     expect(title).toContain('Comments');
   });
 
-  test('articles page title simple', async ({ page }) => {
-    // Act
-    await page.goto('/articles.html');
-
-    // Assert
-    await expect(page).toHaveTitle(/Articles/);
-  });
-
   test('home page title simple', async ({ page }) => {
-    // Act
     await page.goto('');
-
-    // Assert
     await expect(page).toHaveTitle(/GAD/);
   });
 });
